@@ -49,6 +49,6 @@ app.get('/',(req,res) => {
 });
 
 app.listen(PORT, async() => {
-  console.log('Server started and listening to port ${PORT}');
+  console.log(`Server started and listening to port ${PORT}`);
   await initiateDBConnection();
 });
