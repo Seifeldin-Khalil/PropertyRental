@@ -34,6 +34,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const initiateDBConnection = require ('./config/db');
 const propertiesRouter = require('./Routes/Property');
+const AdministrationRouter = require('./Routes/Administration');
 
 dotenv.config({
   path: './config/.env'
@@ -44,12 +45,8 @@ const PORT = process.env.PORT;
 const app = express();
 
 app.use('/properties', propertiesRouter);
+app.use('/administration',AdministrationRouter)
 
-app.get('/',(req,res) => {
-  res.send({
-    data: 'Hello there!'
-  });
-});
 
 app.listen(PORT, async() => {
   console.log(`Server started and listening to port ${PORT}`);

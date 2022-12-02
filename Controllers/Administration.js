@@ -30,8 +30,8 @@ module.exports.banUser = async (req,res) => {
 
 module.exports.viewPending = async (req,res) => {
     try{
-    const pending = await AdministrationService.viewPending();
-    return res.send({pending});
+    const properties = await AdministrationService.viewPending();
+    return res.send({properties});
     } catch (err) {
     res.status(500);
     return res.send({ error: err.message});

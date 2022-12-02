@@ -1,4 +1,3 @@
-const AdministrationModel = require ('../Models/Administration');
 const PropertyModel = require('../Models/Property');
 
 module.exports.removeProperty = async (propertyID) => {
@@ -19,7 +18,8 @@ module.exports.banUser = async (userName) => {
 
 module.exports.viewPending = async () => {
     try{
-        await PropertyModel.find({ pending: true});
+       const pending = await PropertyModel.find({ Available: 'true'});
+       return pending;
     } catch (err) {
         throw new Error ('Could not view pending');
     }

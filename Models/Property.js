@@ -13,7 +13,7 @@ const PropertySchema = new Schema({
         type: 'Number',
         required: true
     },
-    status:{
+    Available:{
         type: 'Boolean',
         required: true
     }
