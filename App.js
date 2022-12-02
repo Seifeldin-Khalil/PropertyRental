@@ -33,6 +33,7 @@ export default App;*/
 const express = require('express');
 const dotenv = require('dotenv');
 const initiateDBConnection = require ('./config/db');
+const propertiesRouter = require('./Routes/Property');
 
 dotenv.config({
   path: './config/.env'
@@ -41,6 +42,8 @@ dotenv.config({
 const PORT = process.env.PORT;
 
 const app = express();
+
+app.use('/properties', propertiesRouter);
 
 app.get('/',(req,res) => {
   res.send({
@@ -52,3 +55,7 @@ app.listen(PORT, async() => {
   console.log(`Server started and listening to port ${PORT}`);
   await initiateDBConnection();
 });
+
+const application = express();
+
+application.use(express.json());
