@@ -1,3 +1,4 @@
+const { request } = require('express');
 const AdministrationService = require('../Services/Administration');
 
 module.exports.deleteProperty = async (req,res) => {
@@ -35,5 +36,22 @@ module.exports.viewPending = async (req,res) => {
     } catch (err) {
     res.status(500);
     return res.send({ error: err.message});
+    }
+};
+
+module.exports.validateProperty = async (req,res) => {
+    try{
+        const Idproperty = await AdministrationService.findPropertybyID(req.params.propertyId);
+        console.log(Idproperty);
+        const propertyUp = {
+            Pending: request.body.Pending
+        }
+        const Validatedproperty = await AdministrationService.validateProperty(Idproperty,propertyUp);
+        res.send({
+            msg: 'User banned successfully.'});
+    }catch (err){
+        return res.status(500).send({
+            error: err.message
+        });
     }
 };

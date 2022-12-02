@@ -16,6 +16,10 @@ const PropertySchema = new Schema({
     Available:{
         type: 'Boolean',
         required: true
+    },
+    Pending:{
+        type:'Boolean',
+        required: true
     }
 });
 
