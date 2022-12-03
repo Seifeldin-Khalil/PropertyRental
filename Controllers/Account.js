@@ -37,4 +37,55 @@ module.exports.viewPurchase = async (req,res) => {
     return res.send({ error: err.message});
     }
 };
-//Signup and login 
+
+module.exports.postUser = async (req, res) => {
+    try {
+      const userInfo = {
+        username: req.body.username,
+        password: req.body.password,
+        name: req.body.name
+      };
+  
+      const userExists = await Account.doesUserExist(userInfo.username);
+      if (userExists) {
+        return res.status(422).send({
+          error: ' same username already exists.'
+        });
+      }
+  
+      await Account.createUser(userInfo);
+    } catch (error) {
+      res.status(500).send({
+        error: error.message
+      });
+    }
+  };
+
+
+
+
+module.exports.postLogin = async (req, res) => {
+    const { username, password } = req.body;
+    try {
+      const user = await Account.checkCredentials(username, password);
+  
+      if (!user) {
+        return res.status(401).send({
+          error:
+            'Invalid, please enter the correct username and password.'
+        });
+      }
+  
+      const jwt = await Account.generateJWT(user);
+      res.send({
+        userId: user._id,
+        username: user.username,
+        jwt: jwt,
+        message: 'Logged in successfully.'
+      });
+    } catch (err) {
+      res.status(500).send({
+        error: error.message
+      });
+    }
+  };
