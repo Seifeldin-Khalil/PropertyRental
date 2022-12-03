@@ -42,13 +42,13 @@ module.exports.viewPending = async (req,res) => {
 module.exports.validateProperty = async (req,res) => {
     try{
         const Idproperty = await AdministrationService.findPropertybyID(req.params.propertyId);
-        console.log(Idproperty);
+        console.log(Idproperty.Pending);
         const propertyUp = {
-            Pending: request.body.Pending
+            Pending: !req.Pending
         }
         const Validatedproperty = await AdministrationService.validateProperty(Idproperty,propertyUp);
         res.send({
-            msg: 'User banned successfully.'});
+            msg: 'Property validated successfully.'});
     }catch (err){
         return res.status(500).send({
             error: err.message
