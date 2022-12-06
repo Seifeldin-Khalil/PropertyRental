@@ -6,9 +6,9 @@ const propertyRouter = Router();
 
 propertyRouter.get('/', propertyController.getproperties);
 
-propertyRouter.post('/post', propertyController.postProperty);
+propertyRouter.post('/', propertyController.postProperty);
 
-propertyRouter.delete('/:propertyID', propertyController.DeleteProperty);
+propertyRouter.delete('/:propertyID', propertyController.deleteProperty);
 
 propertyRouter.put('/propertyAvailability/:propertyID', propertyController.EditProprty);
 

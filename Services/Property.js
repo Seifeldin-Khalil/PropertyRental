@@ -3,6 +3,7 @@ const PropertyModel = require ('../Models/Property');
 module.exports.findAllProperties = async () => {
     try{
         const properties = await PropertyModel.find();
+        //find not pending
         return properties;
 
     }catch (err){
@@ -13,11 +14,11 @@ module.exports.findAllProperties = async () => {
 module.exports.addNewProperty = async (propertInfo)=>{
     try{
         const property = new PropertyModel({
-            Name : propertInfo.Name,
-            Description : propertInfo.Description,
-            Price : propertInfo.Price,
+            Name: propertInfo.Name,
+            Description: propertInfo.Description,
+            Price: propertInfo.Price,
             Available: propertInfo.Available,
-            Pending : propertInfo.Pending
+            Pending: propertInfo.Pending
         });
         const createdProperty = await property.save();
         return createdProperty;
@@ -26,17 +27,17 @@ module.exports.addNewProperty = async (propertInfo)=>{
     }
 };
 
-module.exports.DeleteProperties = async (id)=>{
-    try{
-        await PropertyModel.deleteOne({_id:id});
-    }catch(err){
-        throw new Error('Deletion was not successful');
+module.exports.removeProperty = async (propertyID) => {
+    try {
+      await PropertyModel.deleteOne({ _id: propertyID });
+    } catch (err) {
+      throw new Error('Could not remove property.');
     }
 };
 
 module.exports.findPropertybyID = async (propertyID) => {
     try{
-        const property = await PropertyModel.findById({ _id: propertyID});
+        const property = await PropertyModel.findById({_id:propertyID});
         if(property){
             return property;
         }else{

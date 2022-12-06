@@ -14,16 +14,16 @@ module.exports.getproperties = async (req, res) =>{
 };
 
 module.exports.postProperty = async(req, res)=>{
-    const propertInfo ={
+    const propertInfo = {
         Name: req.body.Name,
         Description: req.body.Description,
         Price: req.body.Price,
         Available: req.body.Available,
-        Pending : req.body.Pending
+        Pending: req.body.Pending
     };
     try{
+        console.log(propertInfo);
         const createdProperty = await propertyService.addNewProperty(propertInfo);
-        console.log(createdProperty); 
         return res.status(201).send({
             msg: 'Property added successfully',
             propertyId: createdProperty._id
@@ -35,16 +35,16 @@ module.exports.postProperty = async(req, res)=>{
     }
 };
 
-module.exports.DeleteProperty = async(req, res) => {
-    const ID = req.params.ID;
+module.exports.deleteProperty = async (req,res) => {
+    const propertyId = req.params.propertyID;
     try{
-        await propertyService.DeleteProperties(ID);
-        res.send({
-            msg: 'Property deleted successfully'
-        })
-    }catch(err){
+    await propertyService.removeProperty(propertyId);
+    res.send({
+        msg: 'Property deleted successfully.'
+    });}
+    catch (err) {
         return res.status(500).send({
-            error:err.message
+            error: err.message
         });
     }
 };
