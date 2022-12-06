@@ -13,10 +13,11 @@ module.exports.findAllProperties = async () => {
 module.exports.addNewProperty = async (propertInfo)=>{
     try{
         const property = new PropertyModel({
-            name : propertInfo.name,
-            description : propertInfo.description,
-            price : propertInfo.price,
-            status: propertInfo.status
+            Name : propertInfo.Name,
+            Description : propertInfo.Description,
+            Price : propertInfo.Price,
+            Available: propertInfo.Available,
+            Pending : propertInfo.Pending
         });
         const createdProperty = await property.save();
         return createdProperty;
@@ -25,7 +26,7 @@ module.exports.addNewProperty = async (propertInfo)=>{
     }
 };
 
-module.exports.DeleteProperty = async (id)=>{
+module.exports.DeleteProperties = async (id)=>{
     try{
         await PropertyModel.deleteOne({_id:id});
     }catch(err){
@@ -33,10 +34,24 @@ module.exports.DeleteProperty = async (id)=>{
     }
 };
 
-module.exports.EditProprty = async(id)=>{
+module.exports.findPropertybyID = async (propertyID) => {
     try{
-        await PropertyModel.updateOne({_id:id});
-        
+        const property = await PropertyModel.findById({ _id: propertyID});
+        if(property){
+            return property;
+        }else{
+            return false;
+        }
+    }
+    catch(error){
+        throw new Error ('Error while finding property')
+    }
+};
+
+module.exports.EditProprty = async(property, Available)=>{
+    try{
+        const editted = await PropertyModel.findByIdAndUpdate(property._id, Available);
+        return editted;
     }catch(err){
         throw new Error('Unable to update');
     }

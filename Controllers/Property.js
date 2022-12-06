@@ -1,3 +1,4 @@
+const { request } = require('express');
 const propertyService = require ('../Services/Property');
 
 module.exports.getproperties = async (req, res) =>{
@@ -13,14 +14,16 @@ module.exports.getproperties = async (req, res) =>{
 };
 
 module.exports.postProperty = async(req, res)=>{
-    const propertInfo = {
-        name: req.body.name,
-        description: req.body.description,
-        price: req.body.price,
-        status: req.body.status
+    const propertInfo ={
+        Name: req.body.Name,
+        Description: req.body.Description,
+        Price: req.body.Price,
+        Available: req.body.Available,
+        Pending : req.body.Pending
     };
     try{
         const createdProperty = await propertyService.addNewProperty(propertInfo);
+        console.log(createdProperty); 
         return res.status(201).send({
             msg: 'Property added successfully',
             propertyId: createdProperty._id
@@ -35,7 +38,7 @@ module.exports.postProperty = async(req, res)=>{
 module.exports.DeleteProperty = async(req, res) => {
     const ID = req.params.ID;
     try{
-        await DeleteProperty(ID);
+        await propertyService.DeleteProperties(ID);
         res.send({
             msg: 'Property deleted successfully'
         })
@@ -47,9 +50,13 @@ module.exports.DeleteProperty = async(req, res) => {
 };
 
 module.exports.EditProprty = async(req, res) => {
-    const ID = req.params.ID;
+    
     try{
-        await EditProprty(ID);
+        const edit = await propertyService.findPropertybyID(request.params.ID);
+        const availibilty = {
+            Available: !req.Available
+        }
+        const EditProprty = await propertyService.EditProprty(edit, availibilty)
         res.send({
             msg: 'Edits are updated to the property'
         })

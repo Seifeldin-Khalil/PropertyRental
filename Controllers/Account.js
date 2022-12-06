@@ -1,5 +1,4 @@
-const { request } = require('express');
-
+/*const { request } = require('express');
 const Account = require('../Services/Account');
 
 module.exports.editAccount = async (req,res) => {
@@ -41,12 +40,12 @@ module.exports.viewPurchase = async (req,res) => {
 module.exports.postUser = async (req, res) => {
     try {
       const userInfo = {
-        username: req.body.username,
-        password: req.body.password,
-        name: req.body.name
+        Username: req.body.Username,
+        Password: req.body.Password,
+        Name: req.body.Name
       };
   
-      const userExists = await Account.doesUserExist(userInfo.username);
+      const userExists = await Account.doesUserExist(userInfo.Username);
       if (userExists) {
         return res.status(422).send({
           error: ' same username already exists.'
@@ -79,7 +78,7 @@ module.exports.postLogin = async (req, res) => {
       const jwt = await Account.generateJWT(user);
       res.send({
         userId: user._id,
-        username: user.username,
+        username: user.Username,
         jwt: jwt,
         message: 'Logged in successfully.'
       });
@@ -88,4 +87,4 @@ module.exports.postLogin = async (req, res) => {
         error: error.message
       });
     }
-  };
+  };*/

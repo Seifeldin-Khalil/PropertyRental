@@ -35,8 +35,8 @@ const dotenv = require('dotenv');
 const initiateDBConnection = require ('./config/db');
 const propertiesRouter = require('./Routes/Property');
 const AdministrationRouter = require('./Routes/Administration');
-const AccountRouter = require('./Routes/Account');
-const PurchaseRouter = require('./Routes/Purchase');
+//const AccountRouter = require('./Routes/Account');
+//const PurchaseRouter = require('./Routes/Purchase');
 
 dotenv.config({
   path: './config/.env'
@@ -48,8 +48,8 @@ const app = express();
 
 app.use('/properties', propertiesRouter);
 app.use('/administration',AdministrationRouter)
-app.use('/Account',AccountRouter)
-app.use('/Purchase',PurchaseRouter)
+//app.use('/Account',AccountRouter)
+//app.use('/Purchase',PurchaseRouter)
 
 
 app.listen(PORT, async() => {

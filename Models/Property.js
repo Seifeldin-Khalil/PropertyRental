@@ -1,15 +1,15 @@
 const {Schema,model} = require('mongoose');
 
 const PropertySchema = new Schema({
-    name:{
+    Name:{
         type: 'String',
         required: true
     },
-    description:{
+    Description:{
         type: 'String',
         required: true
     },
-    price:{
+    Price:{
         type: 'Number',
         required: true
     },

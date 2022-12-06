@@ -1,0 +1,10 @@
+POST http://localhost:3000/properties/post
+Content-Type: application/json
+
+{
+  "Name": "Microsoft",
+  "Description": "A great laptop built and designed by Microsoft",
+  "Price": 38999,
+  "Availabile": false,
+  "Pending": true
+}

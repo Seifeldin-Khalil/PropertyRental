@@ -1,5 +1,5 @@
-const PropertyModel = require ('../Models/Property');
-const UserModel = require('../models/User');
+/*const PropertyModel = require ('../Models/Property');
+const UserModel = require('../Models/User');
 
 module.exports.UpdateAccount = async () => {
     try{
@@ -13,7 +13,7 @@ module.exports.UpdateAccount = async () => {
 
 module.exports.editAccount = async (userId) => {
     try {
-      await PropertyModel.Edit({id: userId });
+      await PropertyModel.Edit({_id: userId });
     } catch (err) {
       throw new Error('Could not edit Account.');
     }
@@ -31,7 +31,7 @@ module.exports.deleteAccount = async (userId)=>{
     
 
 
-module.exports.viewpurchase = async () => {
+/*module.exports.viewpurchase = async () => {
     try{
        const purchase = await PropertyModel.view({ purchase: 'true'});
        return purchase;
@@ -42,12 +42,12 @@ module.exports.viewpurchase = async () => {
 
 module.exports.createUser = async (userInfo) => {
   try {
-    let hashedPassword = await bcrypt.hash(userInfo.password, 12);
+    let hashedPassword = await bcrypt.hash(userInfo.Password, 12);
 
     const newUser = new UserModel({
-      username: userInfo.username,
+      username: userInfo.Username,
       password: hashedPassword,
-      name: userInfo.name
+      name: userInfo.Name
     });
 
     await newUser.save();
@@ -58,7 +58,7 @@ module.exports.createUser = async (userInfo) => {
 
 module.exports.doesUserExist = async (username) => {
   const existingUser = await UserModel.findOne({
-    username: username
+    username: Username
   });
 
   if (existingUser) {
@@ -66,4 +66,4 @@ module.exports.doesUserExist = async (username) => {
   } else {
     return false;
   }
-};
+};*/
