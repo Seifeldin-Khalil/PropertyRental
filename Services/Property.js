@@ -49,9 +49,9 @@ module.exports.findPropertybyID = async (propertyID) => {
     }
 };
 
-module.exports.EditProprty = async(property, Available)=>{
+module.exports.EditProprty = async(propertyID)=>{
     try{
-        const editted = await PropertyModel.findByIdAndUpdate(property._id, Available);
+        const editted = await PropertyModel.updateOne(property._id);
         return editted;
     }catch(err){
         throw new Error('Unable to update');

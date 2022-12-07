@@ -10,6 +10,6 @@ propertyRouter.post('/', propertyController.postProperty);
 
 propertyRouter.delete('/:propertyID', propertyController.deleteProperty);
 
-propertyRouter.put('/propertyAvailability/:propertyID', propertyController.EditProprty);
+propertyRouter.put('/update/:propertyID', propertyController.EditProprty);
 
 module.exports = propertyRouter;

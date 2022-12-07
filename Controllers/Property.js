@@ -18,7 +18,7 @@ module.exports.postProperty = async(req, res)=>{
         Name: req.body.Name,
         Description: req.body.Description,
         Price: req.body.Price,
-        Available: req.body.Available,
+        Available: false,
         Pending: req.body.Pending
     };
     try{
@@ -52,11 +52,13 @@ module.exports.deleteProperty = async (req,res) => {
 module.exports.EditProprty = async(req, res) => {
     
     try{
-        const edit = await propertyService.findPropertybyID(request.params.ID);
+        const edit = await propertyService.findPropertybyID(req.params.ID);
         const availibilty = {
-            Available: !req.Available
+            Name: req.body.Name,
+            Description: req.body.Description,
+            Price: req.body.Price
         }
-        const EditProprty = await propertyService.EditProprty(edit, availibilty)
+        const EditProprty = await propertyService.EditProprty(edit)
         res.send({
             msg: 'Edits are updated to the property'
         })
