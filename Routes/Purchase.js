@@ -1,15 +1,18 @@
-const {Router} = require('express');
+const { Router } = require ('express');
 
-const PurchaseController = require ('../Controllers/Purchase');
+const PurchaseController = require('../Controllers/Purchase');
 
 const PurchaseRouter = Router();
 
-PurchaseRouter.get('/', PurchaseController.getPurchase);
+PurchaseRouter.post('/', PurchaseController.postPayment);
 
-PurchaseRouter.post('/New/', PurchaseController.postPayment);
+/*PurchaseRouter.get('/', PurchaseController.getPurchase);
+
+
 
 PurchaseRouter.put('/', PurchaseController.EditPurchase);
 
-PurchaseRouter.put('/', PurchaseController.validatPurchase);
+PurchaseRouter.put('/', PurchaseController.validatPurchase);*/
 
 module.exports = PurchaseRouter;
+

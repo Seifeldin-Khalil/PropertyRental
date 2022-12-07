@@ -2,6 +2,7 @@ const { request } = require('express');
 
 const Purchase = require('../Services/Purchase');
 const propertyService = require('../Services/Property');
+const { isObjectIdOrHexString } = require('mongoose');
 
 //makes the new payment
 module.exports.postPayment = async(req, res)=>{
@@ -9,20 +10,12 @@ module.exports.postPayment = async(req, res)=>{
         PaymentMethod: req.body.PaymentMethod,
         Status: req.body.Status,
         Description: req.body.Description,
-        PaidAmount: req.body.Available,
-        UserID: '6390bd9d7ff8b9938cd0a596'
+        Price: req.body.Price,
+        UserID: '6390de72861a1a1d8f7ee7dd'
     };
     try{
         console.log(propertyInfo);
         const createdPayment = await Purchase.MakeNewPayment(propertyInfo);
-
-        const Idproperty = await Purchase.findPropertybyID(req.params.propertyId);
-        const propertyUp = {
-            Available: false
-        }
-        const Validatedproperty = await Purchase.validateProperty(Idproperty,propertyUp);
-        res.send({
-            msg: 'Property validated successfully.'});
         return res.status(201).send({
             msg: 'Payment added successfully',
             paymentID: createdPayment._id

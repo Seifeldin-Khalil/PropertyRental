@@ -7,16 +7,17 @@ const PurchaseSchema = new Schema({
         required: true
     },
     Status:{    
-        type: 'Boolean',
-        required: true
-    },
-
-    description:{    
         type: 'String',
         required: true
     },
-    price: {
-        type: 'Number',
+
+    Description:{    
+        type: 'String',
+        required: true
+    },
+    Price: {
+        type: Schema.Types.ObjectId,
+        ref: 'properties',
         required: true
     },
     UserID :{
