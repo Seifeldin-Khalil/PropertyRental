@@ -1,17 +1,27 @@
 const PropertyModel = require('../Models/Property');
 const UsersModel = require('../Models/Accounts');
+const PurchaseModel=require('../Models/Purchase');
+const propertyService = require('../Services/Property');
 
-module.exports.MakePayment = async (userId) => {
+module.exports.MakeNewPayment = async (propertInfo)=>{
     try{
-        await UsersModel.Make({ _id: userId});
-    } catch (err) {
-        throw new Error ('Not Paid');
+        const Payment = new PurchaseModel({
+            PaymentMethod: propertInfo.PaymentMethod,
+            Status: propertInfo.Status,
+            description: propertInfo.Description,
+            PaidAmount: propertInfo.Available,
+            UserID: propertInfo.UserID
+        });
+        const createdPayment = await Payment.save();
+        return createdPayment;
+    }catch(err){
+        throw new Error('Could not make Payment');
     }
 };
 
 module.exports.EditPurchase = async (userId) => {
     try {
-      await PropertyModel.Edit({id: userId });
+      await PropertyModel.Edit({_id: userId });
     } catch (err) {
       throw new Error('Could not edit Purchase.');
     }

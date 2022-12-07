@@ -1,16 +1,11 @@
 const {Schema, model }= require ('mongoose');
 
 const PurchaseSchema = new Schema({
-    Name:{
-        type: 'String',
-        required: true
-    },
+    
     PaymentMethod:{
         type: 'String',
         required: true
     },
-    
-
     Status:{    
         type: 'Boolean',
         required: true
@@ -23,8 +18,11 @@ const PurchaseSchema = new Schema({
     price: {
         type: 'Number',
         required: true
-      },
-    
+    },
+    UserID :{
+        type: 'String',
+        required: true
+    }
     
 });
 const PurchaseModel = model ('Purchase',PurchaseSchema);

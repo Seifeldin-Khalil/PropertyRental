@@ -1,15 +1,25 @@
 const { request } = require('express');
 
 const Purchase = require('../Services/Purchase');
+const propertyService = require('../Services/Property');
 
-module.exports.MakePayment = async (req,res) => {
-   const userId = req.params.userId;
+
+module.exports.postPayment = async(req, res)=>{
+    const propertyInfo = {
+        PaymentMethod: req.body.PaymentMethod,
+        Status: req.body.Status,
+        description: req.body.Description,
+        PaidAmount: req.body.Available,
+        UserID: '6390bd9d7ff8b9938cd0a596'
+    };
     try{
-    await Purchase.MakePayment(userId);
-    res.send({
-        msg: ' paid successfully.'
-    });}
-    catch (err) {
+        console.log(propertyInfo);
+        const createdPayment = await Purchase.MakeNewPayment(propertyInfo);
+        return res.status(201).send({
+            msg: 'Payment added successfully',
+            paymentID: createdPayment._id
+        });
+    }catch(err){
         return res.status(500).send({
             error: err.message
         });
