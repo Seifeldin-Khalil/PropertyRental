@@ -1,4 +1,4 @@
-/*const PropertyModel = require ('../Models/Property');
+const PropertyModel = require ('../Models/Property');
 const UserModel = require('../Models/User');
 
 module.exports.UpdateAccount = async () => {
@@ -31,7 +31,7 @@ module.exports.deleteAccount = async (userId)=>{
     
 
 
-/*module.exports.viewpurchase = async () => {
+module.exports.viewpurchase = async () => {
     try{
        const purchase = await PropertyModel.view({ purchase: 'true'});
        return purchase;
@@ -45,9 +45,9 @@ module.exports.createUser = async (userInfo) => {
     let hashedPassword = await bcrypt.hash(userInfo.Password, 12);
 
     const newUser = new UserModel({
-      username: userInfo.Username,
-      password: hashedPassword,
-      name: userInfo.Name
+      Username: userInfo.Username,
+      Password: hashedPassword,
+      Name: userInfo.Name
     });
 
     await newUser.save();
@@ -58,7 +58,7 @@ module.exports.createUser = async (userInfo) => {
 
 module.exports.doesUserExist = async (username) => {
   const existingUser = await UserModel.findOne({
-    username: Username
+    Username: Username
   });
 
   if (existingUser) {
@@ -66,4 +66,4 @@ module.exports.doesUserExist = async (username) => {
   } else {
     return false;
   }
-};*/
+};

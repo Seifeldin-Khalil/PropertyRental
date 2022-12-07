@@ -1,4 +1,4 @@
-/*const { request } = require('express');
+const { request } = require('express');
 const Account = require('../Services/Account');
 
 module.exports.editAccount = async (req,res) => {
@@ -61,8 +61,6 @@ module.exports.postUser = async (req, res) => {
   };
 
 
-
-
 module.exports.postLogin = async (req, res) => {
     const { username, password } = req.body;
     try {
@@ -78,7 +76,7 @@ module.exports.postLogin = async (req, res) => {
       const jwt = await Account.generateJWT(user);
       res.send({
         userId: user._id,
-        username: user.Username,
+        Username: user.Username,
         jwt: jwt,
         message: 'Logged in successfully.'
       });
@@ -87,4 +85,4 @@ module.exports.postLogin = async (req, res) => {
         error: error.message
       });
     }
-  };*/
+  };
