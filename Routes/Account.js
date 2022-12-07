@@ -4,6 +4,8 @@ const AccountController = require ('../Controllers/Account');
 
 const AccountRouter = Router();
 
-//AccountRouter.get('/',AccountController.)
+AccountRouter.delete('/:userId', AccountController.deleteUser);
+
+AccountRouter.post('/', AccountController.postUser);
 
 module.exports = AccountRouter;
