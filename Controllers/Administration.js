@@ -43,7 +43,8 @@ module.exports.validateProperty = async (req,res) => {
     try{
         const Idproperty = await AdministrationService.findPropertybyID(req.params.propertyId);
         const propertyUp = {
-            Pending: !Idproperty.Pending
+            Pending: !Idproperty.Pending,
+            Available: true
         }
         const Validatedproperty = await AdministrationService.validateProperty(Idproperty,propertyUp);
         res.send({
