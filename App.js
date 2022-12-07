@@ -46,6 +46,8 @@ const PORT = process.env.PORT;
 
 const app = express();
 
+app.use(express.json());
+
 app.use('/properties', propertiesRouter);
 app.use('/administration',AdministrationRouter)
 //app.use('/Account',AccountRouter)
@@ -56,7 +58,3 @@ app.listen(PORT, async() => {
   console.log(`Server started and listening to port ${PORT}`);
   await initiateDBConnection();
 });
-
-const application = express();
-
-application.use(express.json());
