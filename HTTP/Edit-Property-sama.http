@@ -1,8 +1,7 @@
-PUT http://localhost:3000/update/properties/6390504dfaf5c5826da838f1
+PUT http://localhost:3000/properties/6390504dfaf5c5826da838f1
 Content-Type: application/json
 
 {
-  "Name": "Bohsen",
-  "Description": "Bla Bla",
-  "Price": 30999
+  "Name": "Mohsen",
+  "Price": 309999
 }

@@ -1,6 +1,1 @@
-PUT http://localhost:3000/administration/updateProperty/638b19094f747dfd73d1f0fc
-
-Content-Type: application/json
-{
-    "Pending": false
-}
+PUT http://localhost:3000/administration/updateProperty/639050d5faf5c5826da838f3
