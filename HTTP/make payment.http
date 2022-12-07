@@ -1,1 +1,9 @@
-GET http://localhost:3000/Purchase
+POST http://localhost:3000/Purchase/New
+Content-Type: application/json
+
+{
+  "PaymentMethod": "Visa",
+  "Status": "Cash",
+  "Description": "BLA",
+   "PaidAmount": 30000
+}

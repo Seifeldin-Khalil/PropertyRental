@@ -6,10 +6,10 @@ const PurchaseRouter = Router();
 
 PurchaseRouter.get('/', PurchaseController.getPurchase);
 
-module.exports = PurchaseRouter;
+PurchaseRouter.post('/New/', PurchaseController.postPayment);
 
-PurchaseRouter.post('/', PurchaseController.MakePayment);
-
-PurchaseRouter.post('/', PurchaseController.EditPurchase);
+PurchaseRouter.put('/', PurchaseController.EditPurchase);
 
 PurchaseRouter.put('/', PurchaseController.validatPurchase);
+
+module.exports = PurchaseRouter;
