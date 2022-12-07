@@ -35,40 +35,7 @@ module.exports.postPayment = async(req, res)=>{
     }
 };
 
-module.exports.validatePurchase = async (req,res) => {
-    try{
-        const Idpurchase = await Purchase.find(req.params.PurchaseId);
-        console.log(Idpurchase.Pending);
-        const propertyUp = {
-            Pending: !req.Pending
-        }
-        const validatPurchase = await Purchase.find(Idpurchase,propertyUp);
-        res.send({
-            msg: 'Purchase validated successfully.'});
-    }catch(err){
-        return res.status(500).send({
-            error: err.message
-        });
-    }
-};
-
 // sets available by true, might be removed
-module.exports.ChangeAvail = async (req,res) => {
-    try{
-        const Idproperty = await Purchase.findPaymentbyID(req.params.propertyId);
-        const propertyUp = {
-            Available: false
-        }
-        const Validatedproperty = await Purchase.changeAvail(Idproperty,propertyUp);
-        res.send({
-            msg: 'Property validated successfully.'});
-    }catch (err){
-        return res.status(500).send({
-            error: err.message
-        });
-    }
-};
-  
 module.exports.MarkUnAvailable = async (req,res) => {
     try{
         const Idproperty = await AdministrationService.findPropertybyID(req.params.propertyId);
