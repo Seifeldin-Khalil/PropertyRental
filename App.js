@@ -35,7 +35,7 @@ const dotenv = require('dotenv');
 const initiateDBConnection = require ('./config/db');
 const propertiesRouter = require('./Routes/Property');
 const AdministrationRouter = require('./Routes/Administration');
-//const AccountRouter = require('./Routes/Account');
+const AccountRouter = require ('./Routes/Account');
 //const PurchaseRouter = require('./Routes/Purchase');
 
 dotenv.config({
@@ -49,8 +49,9 @@ const app = express();
 app.use(express.json());
 
 app.use('/properties', propertiesRouter);
-app.use('/administration',AdministrationRouter)
-//app.use('/Account',AccountRouter)
+app.use('/administration',AdministrationRouter);
+app.use('/account', AccountRouter);
+//app.use('/account',AccountRouter);
 //app.use('/Purchase',PurchaseRouter)
 
 
