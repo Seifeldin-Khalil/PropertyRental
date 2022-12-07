@@ -8,7 +8,7 @@ propertyRouter.put('/:propertyID', propertyController.EditProprty);
 
 //AdministrationRouter.put('/updateProperty/:propertyI',AdministrationController.validateProperty);
 
-propertyRouter.get('/', propertyController.getproperties);
+propertyRouter.get('/all', propertyController.getproperties);
 
 propertyRouter.post('/', propertyController.postProperty);
 

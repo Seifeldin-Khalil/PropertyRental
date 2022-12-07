@@ -1,5 +1,4 @@
 const { request } = require('express');
-
 const Purchase = require('../Services/Purchase');
 const propertyService = require('../Services/Property');
 const { isObjectIdOrHexString } = require('mongoose');
@@ -31,11 +30,11 @@ module.exports.postPayment = async(req, res)=>{
 // sets available by true, might be removed
 module.exports.MarkUnAvailable = async (req,res) => {
     try{
-        const Idproperty = await AdministrationService.findPropertybyID(req.params.propertyId);
+        const edit = await propertyService.findPropertybyID(req.params.propertyID);
         const Availability = {
             Available: false
         }
-        const UnAvailable = await AdministrationService.MarkUnAvailable(Idproperty,Availability);
+        const UnAvailable = await Purchase.MarkUnAvailable(edit,Availability);
         res.send({
             msg: 'Property changed successfully.'});
     }catch (err){

@@ -1,1 +1,1 @@
-GET http://localhost:3000/properties
+GET http://localhost:3000/properties/all

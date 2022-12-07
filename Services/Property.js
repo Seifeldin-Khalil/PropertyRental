@@ -2,9 +2,9 @@ const PropertyModel = require ('../Models/Property');
 
 module.exports.findAllProperties = async () => {
     try{
-        const properties = await PropertyModel.find();
+        const pending = await PropertyModel.find({ Pending: 'false'});
         //find not pending
-        return properties;
+        return pending;
 
     }catch (err){
         throw new Error ('Could not retreive properties');
@@ -35,6 +35,15 @@ module.exports.removeProperty = async (propertyID) => {
     }
 };
 
+module.exports.EditProprty = async(property, up)=>{
+    try{
+        const editted = await PropertyModel.findByIdAndUpdate(property._id, up);
+        return editted;
+    }catch(err){
+        throw new Error('Unable to update');
+    }
+}
+
 module.exports.findPropertybyID = async (propertyID) => {
     try{
         const property = await PropertyModel.findById({_id:propertyID});
@@ -48,12 +57,3 @@ module.exports.findPropertybyID = async (propertyID) => {
         throw new Error ('Error while finding property')
     }
 };
-
-module.exports.EditProprty = async(property, up)=>{
-    try{
-        const editted = await PropertyModel.findByIdAndUpdate(property._id, up);
-        return editted;
-    }catch(err){
-        throw new Error('Unable to update');
-    }
-}

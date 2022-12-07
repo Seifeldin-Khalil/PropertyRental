@@ -21,18 +21,18 @@ module.exports.MakeNewPayment = async (propertInfo)=>{
     }
 };
 // takes property and returns the Available
-module.exports.MarkUnAvailable = async (property, Availability) =>{ 
+module.exports.MarkUnAvailable = async(property, avail)=>{
     try{
-        const Availability = await PropertyModel.findByIdAndUpdate(property._id,Availability);
-        return Availability;
-    } catch (error){
-        throw new Error ('Error while editing property');
+        const editted = await PropertyModel.findByIdAndUpdate(property._id, avail);
+        return editted;
+    }catch(err){
+        throw new Error('Unable to update');
     }
-};
+}
 
 module.exports.findPropertybyID = async (propertyID) => {
     try{
-        const property = await PropertyModel.findById({ _id: propertyID});
+        const property = await PropertyModel.findById({_id:propertyID});
         if(property){
             return property;
         }else{
