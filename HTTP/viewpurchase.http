@@ -1,0 +1,10 @@
+GET http://localhost:3000/Account 
+POST http://localhost:3000/Account
+
+{
+  "Name": "Mohsen",
+  "Description": "Bla",
+  "Price": 38999,
+  "Available": false,
+  "Pending": true
+}

@@ -27,6 +27,8 @@ module.exports.deleteAccount = async (req,res) => {
         });
     }
 };
+
+
 module.exports.viewPurchase = async (req,res) => {
     try{
     const PurchaseId = await Account.viewPurchase();

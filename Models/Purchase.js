@@ -11,10 +11,20 @@ const PurchaseSchema = new Schema({
     },
     
 
-    Validation:{    
+    Status:{    
         type: 'Boolean',
         required: true
     },
+
+    description:{    
+        type: 'String',
+        required: true
+    },
+    price: {
+        type: 'Number',
+        required: true
+      },
+    
     
 });
 const PurchaseModel = model ('Purchase',PurchaseSchema);
