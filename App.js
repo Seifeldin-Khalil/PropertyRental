@@ -17,11 +17,13 @@ const app = express();
 
 app.use(express.json());
 
+app.use(cors());
+
 app.use('/properties', propertiesRouter);
 app.use('/administration',AdministrationRouter);
 app.use('/account', AccountRouter);
 app.use('/Purchase',PurchaseRouter);
-app.use(cors());
+
 
 
 app.listen(PORT, async() => {

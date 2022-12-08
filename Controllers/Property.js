@@ -2,17 +2,16 @@ const { request } = require('express');
 const propertyService = require ('../Services/Property');
 
 module.exports.getproperties = async (req, res) =>{
-    try{
-        const properties = await propertyService.findAllProperties();
-        res.send({properties});
-        return properties;
-    }catch (err){
-        res.status (500);
-        res.send({
-            error:err
+        try{
+            const properties = await propertyService.findAllProperties();
+           return res.status(201).send({ 
+          properties,
+          msg: "Hospital report generated successfully."
         });
-    }
-};
+        }catch (err) {
+        return res.status(500).send({error: err.message});
+      }
+    };
 
 module.exports.postProperty = async(req, res)=>{
     const propertInfo = {
