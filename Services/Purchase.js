@@ -43,3 +43,11 @@ module.exports.findPropertybyID = async (propertyID) => {
         throw new Error ('Error while finding property')
     }
 };
+
+module.exports.RefundPurchase = async (paymentID) => {
+    try {
+      await PurchaseModel.deleteOne({ _id: paymentID });
+    } catch (err) {
+      throw new Error('Could not Refund, contact support.');
+    }
+};

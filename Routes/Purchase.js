@@ -7,6 +7,8 @@ const PurchaseRouter = Router();
 PurchaseRouter.post('/', PurchaseController.postPayment);
 
 PurchaseRouter.put('/edit/:propertyID', PurchaseController.MarkUnAvailable);
+
+PurchaseRouter.delete('/:paymentID', PurchaseController.RefundPayment);
 /*PurchaseRouter.get('/', PurchaseController.getPurchase);
 
 PurchaseRouter.put('/', PurchaseController.EditPurchase);

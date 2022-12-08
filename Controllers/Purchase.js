@@ -30,6 +30,20 @@ module.exports.postPayment = async(req, res)=>{
     }
 };
 
+module.exports.RefundPayment = async (req,res) => {
+    const paymentID = req.params.paymentID;
+    try{
+    await Purchase.RefundPurchase(paymentID);
+    res.send({
+        msg: 'Purchase refunded, Money will be back in your account in 14 days'
+    });}
+    catch (err) {
+        return res.status(500).send({
+            error: err.message
+        });
+    }
+};
+
 // sets available by true, might be removed
 module.exports.MarkUnAvailable = async (req,res) => {
     try{
