@@ -34,3 +34,33 @@ module.exports.postUser = async(req, res)=>{
         });
     }
 };
+
+module.exports.viewPurchaseHistory = async(req, res)=>{
+    try{
+        const pHistory = await AccountService.viewPurchaseHistory(req.params.userId);
+        console.log(req.params.userId);
+        return res.send(pHistory);
+    }catch (err) {
+        res.status(500);
+        return res.send({ error: err.message});
+        }
+};
+
+module.exports.EditAccount = async(req, res) => {
+    try{
+        const editID = await AccountService.findUserbyID(req.params.userId)
+        const edits = {
+            Username: req.body.Username,
+            Password: req.body.Password,
+            Name: req.body.Name
+        }
+        const EditAcc = await AccountService.EditAccount(editID,edits)
+        res.send({
+            msg: 'Edits are updated to the account'
+        })
+    }catch(err){
+        return res.status(500).send({
+            error:err.message
+        });
+    }
+};

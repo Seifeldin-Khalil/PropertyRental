@@ -1,10 +1,10 @@
-GET  http://localhost:3000/Account
+PUT  http://localhost:3000/account/6391a5c4cd725c4de0006983
 Content-Type: application/json
 
 {
-  "Name": "",
-  "Username": ""
-  //"supplierId": "63515fc25b57b46e110e7d11"
+  "Username": "Ahmaaad",
+  "Password": "567",
+  "Name": "Ahmed"
 } 
 
 

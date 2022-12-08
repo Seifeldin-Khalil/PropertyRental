@@ -8,4 +8,8 @@ AccountRouter.delete('/:userId', AccountController.deleteUser);
 
 AccountRouter.post('/', AccountController.postUser);
 
+AccountRouter.get('/:userId', AccountController.viewPurchaseHistory);
+
+AccountRouter.put('/:userId', AccountController.EditAccount);
+
 module.exports = AccountRouter;

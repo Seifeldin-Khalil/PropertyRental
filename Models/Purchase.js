@@ -16,7 +16,7 @@ const PurchaseSchema = new Schema({
         required: true
     },
     Price: {
-        type: Schema.Types.ObjectId,
+        type: 'Number',
         ref: 'properties',
         required: true
     },

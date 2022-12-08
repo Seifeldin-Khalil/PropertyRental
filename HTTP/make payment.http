@@ -2,7 +2,7 @@ POST http://localhost:3000/Purchase
 Content-Type: application/json
 
 {
-  "PaymentMethod": "TEST25",
+  "PaymentMethod": "TEST",
   "Status": "Visa",
   "Description": "yarab"
 }

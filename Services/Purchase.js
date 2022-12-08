@@ -11,7 +11,7 @@ module.exports.MakeNewPayment = async (propertInfo)=>{
             PaymentMethod: propertInfo.PaymentMethod,
             Status: propertInfo.Status,
             Description: propertInfo.Description,
-            Price: new ObjectId(propertInfo.Price),
+            Price: propertInfo.Price,
             UserID: propertInfo.UserID
         });
         const createdPayment = await Payment.save();
