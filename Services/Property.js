@@ -4,6 +4,7 @@ module.exports.findAllProperties = async () => {
     try{
         const pending = await PropertyModel.find({ Pending: 'false'});
         //find not pending
+        console.log(pending);
         return pending;
 
     }catch (err){

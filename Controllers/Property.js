@@ -5,6 +5,7 @@ module.exports.getproperties = async (req, res) =>{
     try{
         const properties = await propertyService.findAllProperties();
         res.send({properties});
+        return properties;
     }catch (err){
         res.status (500);
         res.send({
