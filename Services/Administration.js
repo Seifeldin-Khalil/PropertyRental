@@ -17,6 +17,16 @@ module.exports.banUser = async (userId) => {
     }
 };
 
+module.exports.findAllUsers = async () => {
+    try{
+        const users = await UsersModel.find();
+        return users;
+
+    }catch (err){
+        throw new Error ('Could not retreive users');
+    }
+};
+
 module.exports.viewPending = async () => {
     try{
        const pending = await PropertyModel.find({ Pending: 'true'});

@@ -28,6 +28,17 @@ module.exports.banUser = async (req,res) => {
             });
         }
 };
+module.exports.getUsers = async (req, res) =>{
+    try{
+        const users = await AdministrationService.findAllUsers();
+       return res.status(201).send({ 
+      users,
+      msg: "users got successfully."
+    });
+    }catch (err) {
+    return res.status(500).send({error: err.message});
+  }
+};
 
 module.exports.viewPending = async (req,res) => {
     try{

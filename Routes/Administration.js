@@ -4,7 +4,7 @@ const AdministrationController = require('../Controllers/Administration');
 
 const AdministrationRouter = Router();
 
-AdministrationRouter.get('/',AdministrationController.viewPending);
+AdministrationRouter.get('/viewpending/',AdministrationController.viewPending);
 
 AdministrationRouter.delete('/properyDelete/:propertyId', AdministrationController.deleteProperty);
 
@@ -12,5 +12,6 @@ AdministrationRouter.delete('/userDelete/:userId', AdministrationController.banU
 
 AdministrationRouter.put('/updateProperty/:propertyId',AdministrationController.validateProperty);
 
+AdministrationRouter.get('/getUsers/', AdministrationController.getUsers);
 
 module.exports = AdministrationRouter;
