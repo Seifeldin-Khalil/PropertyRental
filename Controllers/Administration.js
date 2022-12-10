@@ -4,8 +4,10 @@ const AdministrationService = require('../Services/Administration');
 module.exports.deleteProperty = async (req,res) => {
     const propertyId = req.params.propertyId;
     try{
-    await AdministrationService.removeProperty(propertyId);
+     await AdministrationService.removeProperty(propertyId);
+     const viewpending = await AdministrationService.viewPending();
     res.send({
+        viewpending,
         msg: 'Property deleted successfully.'
     });}
     catch (err) {
@@ -19,7 +21,9 @@ module.exports.banUser = async (req,res) => {
     const userId = req.params.userId;
     try{
         await AdministrationService.banUser(userId);
+        const users = await AdministrationService.findAllUsers();
         res.send({
+            users,
             msg: 'User banned successfully.'
         });} 
         catch (err){
@@ -58,8 +62,9 @@ module.exports.validateProperty = async (req,res) => {
             Available: true
         }
         const Validatedproperty = await AdministrationService.validateProperty(Idproperty,propertyUp);
-        res.send({
+        return res.send({ Validatedproperty,
             msg: 'Property validated successfully.'});
+        
     }catch (err){
         return res.status(500).send({
             error: err.message
