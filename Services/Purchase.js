@@ -20,6 +20,18 @@ module.exports.MakeNewPayment = async (propertInfo)=>{
         throw new Error('Could not create Property');
     }
 };
+
+module.exports.findMyPendings = async(userId)=>{
+    try{
+        const pendingP = await PurchaseModel.find({UserID:userId});
+        //find not pending
+        return pendingP;
+
+    }catch (err){
+        throw new Error ('Could not retreive properties');
+    }
+};
+
 // takes property and returns the Available
 module.exports.MarkUnAvailable = async(property, avail)=>{
     try{

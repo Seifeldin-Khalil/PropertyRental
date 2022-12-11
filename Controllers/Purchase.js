@@ -32,6 +32,17 @@ module.exports.postPayment = async(req, res)=>{
     }
 };
 
+module.exports.findMyPendings = async (req, res) => {
+    try{
+        const mine = await Purchase.findMyPendings(req.params.userId);
+        return res.status(201).send({ 
+            mine
+        });
+    }catch (err) {
+        return res.status(500).send({error: err.message});
+      }
+};
+
 module.exports.RefundPayment = async (req,res) => {
     const paymentID = req.params.paymentID;
     try{
