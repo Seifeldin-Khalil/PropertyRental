@@ -24,7 +24,7 @@ module.exports.findMyProperties = async (req, res) => {
       }
 };
 
-const ID = '6394a307a8bafc7e2a3726b7';
+const ID = '6394a307a8bafc7e2a372633';
 module.exports.postProperty = async(req, res)=>{
     const propertInfo = {
         Name: req.body.Name,
@@ -72,7 +72,8 @@ module.exports.EditProprty = async(req, res) => {
         const availibilty = {
             Name: req.body.Name,
             Description: req.body.Description,
-            Price: req.body.Price
+            Price: req.body.Price,
+            ImgURL: req.body.ImgURL
         }
         const EditProprty = await propertyService.EditProprty(edit,availibilty)
         res.send({

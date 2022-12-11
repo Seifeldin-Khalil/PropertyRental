@@ -1,7 +1,8 @@
-PUT http://localhost:3000/properties/6390bd9d7ff8b9938cd0a596
+PUT http://localhost:3000/properties/6396277e7bac45ee7f228ce2
 Content-Type: application/json
 
 {
   "Name": "VILLA",
-  "Price": 309999
+  "Price": 309999,
+  "ImgURL": "HII"
 }
