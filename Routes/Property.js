@@ -14,6 +14,6 @@ propertyRouter.post('/', propertyController.postProperty);
 
 propertyRouter.delete('/:propertyID', propertyController.deleteProperty);
 
-
+propertyRouter.get('/all/:userId', propertyController.findMyProperties);
 
 module.exports = propertyRouter;

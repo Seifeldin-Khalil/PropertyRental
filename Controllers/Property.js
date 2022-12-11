@@ -4,14 +4,25 @@ const propertyService = require ('../Services/Property');
 module.exports.getproperties = async (req, res) =>{
         try{
             const properties = await propertyService.findAllProperties();
-           return res.status(201).send({ 
-          properties,
-          msg: "Hospital report generated successfully."
+            return res.status(201).send({ 
+            properties,
+            msg: "Hospital report generated successfully."
         });
         }catch (err) {
         return res.status(500).send({error: err.message});
       }
-    };
+};
+
+module.exports.findMyProperties = async (req, res) => {
+    try{
+        const mine = await propertyService.findMyProperties(req.params.userId);
+        return res.status(201).send({ 
+            mine
+        });
+    }catch (err) {
+        return res.status(500).send({error: err.message});
+      }
+};
 
 module.exports.postProperty = async(req, res)=>{
     const propertInfo = {

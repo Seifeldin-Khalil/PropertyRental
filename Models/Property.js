@@ -20,6 +20,14 @@ const PropertySchema = new Schema({
     Pending:{
         type:'Boolean',
         required: true
+    },
+    Paid:{
+        type:'Boolean',
+        required: true
+    },
+    UserID :{
+        type: 'String',
+        required: true
     }
 });
 

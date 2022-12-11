@@ -2,7 +2,19 @@ const PropertyModel = require ('../Models/Property');
 
 module.exports.findAllProperties = async () => {
     try{
-        const pending = await PropertyModel.find({ Pending: 'false'});
+        const pending = await PropertyModel.find({ Pending: 'false', Available: 'true', Paid: 'false'});
+        //find not pending
+        console.log(pending);
+        return pending;
+
+    }catch (err){
+        throw new Error ('Could not retreive properties');
+    }
+};
+
+module.exports.findMyProperties = async(userId)=>{
+    try{
+        const pending = await PropertyModel.find({UserID:userId});
         //find not pending
         console.log(pending);
         return pending;
@@ -54,7 +66,7 @@ module.exports.findPropertybyID = async (propertyID) => {
             return false;
         }
     }
-    catch(error){
+    catch(err){
         throw new Error ('Error while finding property')
     }
 };
