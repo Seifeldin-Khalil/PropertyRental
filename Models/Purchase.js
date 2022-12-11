@@ -20,11 +20,16 @@ const PurchaseSchema = new Schema({
         ref: 'properties',
         required: true
     },
+    PropertyID:{
+        type:'String',
+        ref: 'properties',
+        required: true
+    },
+
     UserID :{
         type: 'String',
         required: true
-    }
-    
+    },
 });
 const PurchaseModel = model ('Purchase',PurchaseSchema);
 

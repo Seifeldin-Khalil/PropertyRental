@@ -7,11 +7,13 @@ const { isObjectIdOrHexString } = require('mongoose');
 module.exports.postPayment = async(req, res)=>{
     const ID = '6394a307a8bafc7e2a3726b7';
     const price =await propertyService.findPropertybyID(ID);
+    const proper =await propertyService.findPropertybyID(ID);
     const propertyInfo = {
         PaymentMethod: req.body.PaymentMethod,
         Status: req.body.Status,
         Description: req.body.Description,
         Price: price.Price,
+        PropertyID: proper._id,
         UserID: ID
     };
     console.log(price);
@@ -54,6 +56,21 @@ module.exports.MarkUnAvailable = async (req,res) => {
         const UnAvailable = await Purchase.MarkUnAvailable(edit,Availability);
         res.send({
             msg: 'Property changed successfully.'});
+    }catch (err){
+        return res.status(500).send({
+            error: err.message
+        });
+    }
+};
+module.exports.MarkPaid = async (req,res) => {
+    try{
+        const edit = await propertyService.findPropertybyID(req.params.propertyID);
+        const Paid = {
+            Paid: true
+        }
+        const paid = await Purchase.Markpaid(edit,Paid);
+        res.send({
+            msg: 'Property paid successfully.'});
     }catch (err){
         return res.status(500).send({
             error: err.message

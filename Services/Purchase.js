@@ -30,6 +30,15 @@ module.exports.MarkUnAvailable = async(property, avail)=>{
     }
 }
 
+module.exports.MarkUnPaid = async(property, Paid)=>{
+    try{
+        const editted = await PropertyModel.findByIdAndUpdate(property._id, Paid);
+        return editted;
+    }catch(err){
+        throw new Error('Unable to update');
+    }
+}
+
 module.exports.findPropertybyID = async (propertyID) => {
     try{
         const property = await PropertyModel.findById({_id:propertyID});
