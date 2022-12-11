@@ -28,6 +28,10 @@ const PropertySchema = new Schema({
     UserID :{
         type: 'String',
         required: true
+    },
+    ImgURL :{
+        type: 'String',
+        required:false
     }
 });
 

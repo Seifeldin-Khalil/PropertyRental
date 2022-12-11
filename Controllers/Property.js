@@ -49,8 +49,9 @@ module.exports.postProperty = async(req, res)=>{
 module.exports.deleteProperty = async (req,res) => {
     const propertyId = req.params.propertyID;
     try{
-    await propertyService.removeProperty(propertyId);
+    const del = await propertyService.removeProperty(propertyId);
     res.send({
+        del,
         msg: 'Property deleted successfully.'
     });}
     catch (err) {

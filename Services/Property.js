@@ -31,7 +31,9 @@ module.exports.addNewProperty = async (propertInfo)=>{
             Description: propertInfo.Description,
             Price: propertInfo.Price,
             Available: propertInfo.Available,
-            Pending: propertInfo.Pending
+            Pending: propertInfo.Pending,
+            Paid: propertyInfo.Paid,
+            ImgURL: propertInfo.ImgURL
         });
         const createdProperty = await property.save();
         return createdProperty;
