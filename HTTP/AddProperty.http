@@ -1,10 +1,13 @@
-POST http://localhost:3000/properties
+POST http://localhost:3000/properties/post
 Content-Type: application/json
 
 {
-  "Name": "Mohsen",
+  "Name": "Sama",
   "Description": "Bla",
-  "Price": 38999,
-  "Available": false,
-  "Pending": true
+  "Price": 1138999,
+  "Available": true,
+  "Pending": false,
+  "Paid": true,
+  "UserID": "6395e4866fecb8c22c3ca5bb",
+  "ImgURL":"https://mir-s3-cdn-cf.behance.net/project_modules/fs/b7c88e58818835.5a0acc42d5d81.jpg"
 }

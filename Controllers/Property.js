@@ -24,13 +24,17 @@ module.exports.findMyProperties = async (req, res) => {
       }
 };
 
+const ID = '6394a307a8bafc7e2a3726b7';
 module.exports.postProperty = async(req, res)=>{
     const propertInfo = {
         Name: req.body.Name,
         Description: req.body.Description,
         Price: req.body.Price,
-        Available: false,
-        Pending: req.body.Pending
+        Available: true,
+        Pending:  false,
+        Paid: false,
+        UserID: ID,
+        ImgURL: req.body.ImgURL
     };
     try{
         console.log(propertInfo);

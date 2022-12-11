@@ -10,7 +10,7 @@ propertyRouter.put('/:propertyID', propertyController.EditProprty);
 
 propertyRouter.get('/all', propertyController.getproperties);
 
-propertyRouter.post('/', propertyController.postProperty);
+propertyRouter.post('/post', propertyController.postProperty);
 
 propertyRouter.delete('/:propertyID', propertyController.deleteProperty);
 
