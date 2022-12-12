@@ -6,15 +6,6 @@ const PurchaseSchema = new Schema({
         type: 'String',
         required: true
     },
-    Status:{    
-        type: 'String',
-        required: true
-    },
-
-    Description:{    
-        type: 'String',
-        required: true
-    },
     Price: {
         type: 'Number',
         ref: 'properties',
@@ -25,9 +16,9 @@ const PurchaseSchema = new Schema({
         ref: 'properties',
         required: true
     },
-
     UserID :{
         type: 'String',
+        ref: 'account',
         required: true
     },
 });

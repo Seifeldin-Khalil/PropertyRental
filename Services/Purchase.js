@@ -4,14 +4,12 @@ const PurchaseModel=require('../Models/Purchase');
 const propertyService = require('../Services/Property');
 const {ObjectId} = require("mongoose").Types;
 
-//makes a payment enters a record in the table of payments
 module.exports.MakeNewPayment = async (propertInfo)=>{ 
     try{
         const Payment = new PurchaseModel({
             PaymentMethod: propertInfo.PaymentMethod,
-            Status: propertInfo.Status,
-            Description: propertInfo.Description,
-            Price: propertInfo.Price,
+            Price: new ObjectId(propertInfo.Price),
+            PropertyID: propertInfo.PropertyID,
             UserID: propertInfo.UserID
         });
         const createdPayment = await Payment.save();

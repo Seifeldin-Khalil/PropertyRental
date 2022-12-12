@@ -4,7 +4,9 @@ const PurchaseController = require('../Controllers/Purchase');
 
 const PurchaseRouter = Router();
 
-PurchaseRouter.post('/', PurchaseController.postPayment);
+//PurchaseRouter.post('/:ID', PurchaseController.postPayment);
+
+PurchaseRouter.post('/:ID', PurchaseController.postPayment);
 
 PurchaseRouter.put('/edit/:propertyID', PurchaseController.MarkUnAvailable);
 
