@@ -13,7 +13,7 @@ const AuthProvider = (props) => {
     token: token,
     login: (id, username, token) => {
       setID(id);
-      setUsername(username);
+      setUsername(Username);
       setToken(token);
     },
     logout: () => {

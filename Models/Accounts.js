@@ -12,6 +12,10 @@ const UsersSchema = new Schema({
     Name:{
         type:'String',
         required: true
+    },
+    Role:{
+        type:'String',
+        required:true
     }
 });
 

@@ -14,10 +14,44 @@ module.exports.postUser = async (req,res) => {
                 error: 'A user with the same username aleardy exists.'
             });
         }
-        await AuthService.createUser(userInfo);
+       const u = await AuthService.createUser(userInfo);
+       return u;
     } catch (error){
         res.status(500).send({
             error: error.message
         });
+    }
+};
+
+module.exports.postLogin = async (req, res) => {
+    const { Role, Username, Password } = req.body;
+    try {
+      var acc = null; 
+      if(Role == "Admin"){
+        acc = await AuthService.chkAdminCreds(Username, Password);
+      }else if (Role == "Customer"){
+        acc = await AuthService.chkUserCreds(Username, Password);
+      }
+      if (acc == null) {
+        return res.status(401).send({
+          error:
+            'Invalid credentials, please enter the correct username and password.'
+        });
+      }
+      //const jwt = await AuthService.generateJWT(acc, Role);
+
+      res.send({
+        userId: acc._id,
+        Username: acc.Username,
+        //jwt: jwt,
+        role: Role,
+        message: 'Logged in successfully.'
+      });
+
+    }catch (err) {
+    res.status(500).send({
+      error: err.message
+    });
+
     }
 };
