@@ -1,4 +1,4 @@
-PUT http://localhost:3000/properties/6396277e7bac45ee7f228ce2
+PUT http://localhost:3000/properties/63969db4feed3771d7a5ee0b
 Content-Type: application/json
 
 {

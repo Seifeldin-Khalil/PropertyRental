@@ -1,1 +1,1 @@
-GET http://localhost:3000/administration
+GET http://localhost:3000/administration/viewpending

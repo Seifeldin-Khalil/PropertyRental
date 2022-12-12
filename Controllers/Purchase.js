@@ -11,17 +11,16 @@ module.exports.postPayment = async(req, res)=>{
             PaymentMethod: req.body.PaymentMethod,
             Price: property.Price,
             PropertyID: property._id,
-            UserID: "63955272d36b1fe03d95fb76"
+            UserID: req.params.ID
         };
         console.log(property);
+    }catch(err){
+        return res.status(500).send({
+            error: err.message
+        });
+    }
 
     const price =await propertyService.findPropertybyID(req.params.ID);
-    const propertyInfo = {
-        PaymentMethod: req.body.PaymentMethod,
-        Price: price.Price,
-        PropertyID: price._id,
-        UserID: req.body.UserID
-    };
     console.log(price);
     try{
         console.log(propertyInfo);

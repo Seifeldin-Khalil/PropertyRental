@@ -25,7 +25,7 @@ module.exports.findMyProperties = async(userId)=>{
     }
 };
 
-module.exports.addNewProperty = async (propertInfo)=>{
+module.exports.AddProperty =async(propertInfo)=>{
     try{
         const property = new PropertyModel({
             Name: propertInfo.Name,
@@ -38,7 +38,7 @@ module.exports.addNewProperty = async (propertInfo)=>{
             ImgURL: propertInfo.ImgURL
         });
         const addprop = await UsersModel.findByIdAndUpdate({_id:property.UserID}, {$push:{Properties:property._id}});
-        const confirmation = await UsersModel.findById({_id:property.UserID});
+        const confirmation = await UsersModel.find({_id:property.UserID});
         const data = {
             Name: property.Name,
             Description: property.Description,
@@ -49,6 +49,7 @@ module.exports.addNewProperty = async (propertInfo)=>{
         const createdProperty = await property.save();
         return createdProperty;
     }catch(err){
+        console.log(err);
         throw new Error('Could not create Property');
     }
 };

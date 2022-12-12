@@ -24,21 +24,23 @@ module.exports.findMyProperties = async (req, res) => {
       }
 };
 
-const ID = '63969db4feed3771d7a5ee0b';
+
+
 module.exports.postProperty = async(req, res)=>{
+    const ID = '63969db4feed3771d7a5ee0b';
     const propertInfo = {
         Name: req.body.Name,
         Description: req.body.Description,
         Price: req.body.Price,
-        Available: true,
-        Pending:  false,
+        Available: false,
+        Pending:  true,
         Paid: false,
         UserID: ID,
         ImgURL: req.body.ImgURL
     };
     try{
         console.log(propertInfo);
-        const createdProperty = await propertyService.addNewProperty(propertInfo);
+        const createdProperty = await propertyService.AddProperty(propertInfo);
         return res.status(201).send({
             msg: 'Property added successfully',
             propertyId: createdProperty._id
@@ -77,6 +79,7 @@ module.exports.EditProprty = async(req, res) => {
         }
         const EditProprty = await propertyService.EditProprty(edit,availibilty)
         res.send({
+
             msg: 'Edits are updated to the property'
         })
     }catch(err){
