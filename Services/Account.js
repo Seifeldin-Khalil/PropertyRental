@@ -29,6 +29,7 @@ module.exports.createUser = async (userInfo) => {
 module.exports.viewPurchaseHistory = async (userId) => {
     try{
        const history = await PurchaseModel.find({UserID: userId});
+       console.log(history);
        return history;
     }catch (err){
         throw new Error ('Could not view history');

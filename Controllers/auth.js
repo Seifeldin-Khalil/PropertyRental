@@ -29,10 +29,13 @@ module.exports.postLogin = async (req, res) => {
       var acc = null; 
       if(Role == "Admin"){
         acc = await AuthService.chkAdminCreds(Username, Password);
+        console.log(acc);
       }else if (Role == "Customer"){
         acc = await AuthService.chkUserCreds(Username, Password);
+        console.log(acc);
       }
       if (acc == null) {
+        console.log(acc);
         return res.status(401).send({
           error:
             'Invalid credentials, please enter the correct username and password.'

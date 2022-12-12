@@ -1,6 +1,6 @@
-POST http://localhost:3000/Purchase/6396277e7bac45ee7f228ce2
+POST http://localhost:3000/Purchase/6390bd9d7ff8b9938cd0a596
 Content-Type: application/json
 
 {
-  "PaymentMethod": "propertInfo.PaymentMethod",
+  "PaymentMethod": "Cash"
 }
