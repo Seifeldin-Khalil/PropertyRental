@@ -8,19 +8,16 @@ const PurchaseSchema = new Schema({
     },
     Price: {
         type: 'Number',
-        ref: 'properties',
         required: true
     },
     PropertyID:{
         type:'String',
-        ref: 'properties',
         required: true
     },
     UserID :{
         type: 'String',
-        ref: 'account',
         required: true
-    },
+    }
 });
 const PurchaseModel = model ('Purchase',PurchaseSchema);
 

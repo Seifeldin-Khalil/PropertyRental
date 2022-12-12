@@ -5,16 +5,16 @@ const { isObjectIdOrHexString } = require('mongoose');
 
 //makes the new payment
 module.exports.postPayment = async(req, res)=>{
-    const ID = '6395038cd36b1fe03d95fb72';
-    const price =await propertyService.findPropertybyID(req.params.ID);
-    const propertyInfo = {
-        PaymentMethod: req.body.PaymentMethod,
-        Price: price.Price,
-        PropertyID: price._id,
-        UserID: "63955272d36b1fe03d95fb76"
-    };
-    console.log(price);
     try{
+        const property = await propertyService.findPropertybyID(req.params.ID);
+        const propertyInfo = {
+            PaymentMethod: req.body.PaymentMethod,
+            Price: property.Price,
+            PropertyID: property._id,
+            UserID: "63955272d36b1fe03d95fb76"
+        };
+        console.log(property);
+
         console.log(propertyInfo);
         const createdPayment = await Purchase.MakeNewPayment(propertyInfo);
         return res.status(201).send({
