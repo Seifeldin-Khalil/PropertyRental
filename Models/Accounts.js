@@ -16,7 +16,6 @@ const UsersSchema = new Schema({
     Role:{
         type:'String',
         required:true
-    }
     },
     Email:{
         type:"String",
