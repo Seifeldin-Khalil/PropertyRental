@@ -12,7 +12,16 @@ const UsersSchema = new Schema({
     Name:{
         type:'String',
         required: true
-    }
+    },
+    Email:{
+        type:"String",
+        required: false
+    },
+    Properties :[{
+        type: Schema.Types.ObjectId,
+        ref:'properties',
+        required: false
+    }]
 });
 
 const UsersModel = model ('Users',UsersSchema);

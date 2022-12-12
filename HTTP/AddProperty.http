@@ -2,8 +2,8 @@ POST http://localhost:3000/properties/post
 Content-Type: application/json
 
 {
-  "Name": "Sama",
-  "Description": "BLA",
+  "Name": "TESTING2",
+  "Description": "TESTING",
   "Price": 1138999,
   "ImgURL":"sms"
 }

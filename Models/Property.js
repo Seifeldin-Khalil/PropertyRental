@@ -26,7 +26,8 @@ const PropertySchema = new Schema({
         required: true
     },
     UserID :{
-        type: 'String',
+        type: Schema.Types.ObjectId,
+        ref:'account',
         required: true
     },
     ImgURL :{

@@ -1,5 +1,6 @@
 const PropertyModel = require ('../Models/Property');
-
+const UsersModel = require('../Models/Accounts');
+const axios = require ('axios');
 module.exports.findAllProperties = async () => {
     try{
         const pending = await PropertyModel.find({ Pending: 'false', Available: 'true', Paid: 'false'});
@@ -36,6 +37,15 @@ module.exports.addNewProperty = async (propertInfo)=>{
             UserID: propertInfo.UserID,
             ImgURL: propertInfo.ImgURL
         });
+        const addprop = await UsersModel.findByIdAndUpdate({_id:property.UserID}, {$push:{Properties:property._id}});
+        const confirmation = await UsersModel.findById({_id:property.UserID});
+        const data = {
+            Name: property.Name,
+            Description: property.Description,
+            Price: property.Price,
+            Email: confirmation.Email
+        }
+        axios.post(process.env.CONFIRMATION, data);
         const createdProperty = await property.save();
         return createdProperty;
     }catch(err){
