@@ -16,7 +16,8 @@ module.exports.createUser = async (userInfo) => {
         const user = new UsersModel({
             Name: userInfo.Name,
             Username: userInfo.Username,
-            Password: userInfo.Password
+            Password: userInfo.Password,
+            Email: userInfo.Email
         });
         const CreatedUser = await user.save();
         return CreatedUser;

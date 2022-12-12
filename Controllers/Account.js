@@ -19,7 +19,8 @@ module.exports.postUser = async(req, res)=>{
     const userInfo = {
         Name: req.body.Name,
         Username: req.body.Username,
-        Password: req.body.Password
+        Password: req.body.Password,
+        Email: req.body.Email
     };
     try{
         console.log(userInfo);

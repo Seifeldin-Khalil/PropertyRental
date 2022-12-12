@@ -8,10 +8,11 @@ module.exports.MakeNewPayment = async (propertInfo)=>{
     try{
         const Payment = new PurchaseModel({
             PaymentMethod: propertInfo.PaymentMethod,
-            Price: new ObjectId(propertInfo.Price),
+            Price:propertInfo.Price,
             PropertyID: propertInfo.PropertyID,
             UserID: propertInfo.UserID
         });
+        console.log(Payment);
         const createdPayment = await Payment.save();
         return createdPayment;
     }catch(err){
