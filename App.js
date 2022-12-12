@@ -1,5 +1,5 @@
 const express = require('express');
-const dotenv = require('dotenv');
+
 const cors = require('cors');
 const initiateDBConnection = require ('./config/db');
 const propertiesRouter = require('./Routes/Property');
@@ -8,9 +8,7 @@ const AccountRouter = require ('./Routes/Account');
 const PurchaseRouter = require('./Routes/Purchase');
 const authRouter = require('./Routes/auth');
 
-dotenv.config({
-  path: './config/.env'
-});
+
 
 const PORT = process.env.PORT;
 
