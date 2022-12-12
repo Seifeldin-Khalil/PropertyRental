@@ -13,6 +13,11 @@ const UsersSchema = new Schema({
         type:'String',
         required: true
     },
+    Role:{
+        type:'String',
+        required:true
+    }
+    },
     Email:{
         type:"String",
         required: false

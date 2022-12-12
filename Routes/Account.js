@@ -6,7 +6,7 @@ const AccountRouter = Router();
 
 AccountRouter.delete('/:userId', AccountController.deleteUser);
 
-AccountRouter.post('/', AccountController.postUser);
+AccountRouter.post('/signin', AccountController.postUser);
 
 AccountRouter.get('/:userId', AccountController.viewPurchaseHistory);
 
