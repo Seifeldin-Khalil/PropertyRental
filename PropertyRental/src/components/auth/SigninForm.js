@@ -28,7 +28,7 @@ const SigninForm = () => {
       }
 
       // invoke the login function in our auth context
-      authContext.login(data.userId, data.username, data.jwt);
+      authContext.login(data.userId, data.Username, data.Role);
 
       // navigate to the home page
       navigate('/');
